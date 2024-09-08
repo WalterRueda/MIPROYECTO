@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOTO SHOP</title>
     <link rel="stylesheet" href="Style.css">
 </head>
+
 <body>
     <header class="header">
         <div class="menu container">
@@ -13,6 +15,9 @@
                 <img src="IMAGENES/menu.png" class="menu-icono" alt="">
             </label>
             <nav class="navbar">
+                <nav>
+                    <img src="IMAGENES/" alt="">
+                </nav>
                 <ul>
                     <li><a href="#">Inicio</a></li>
                     <li><a href="#">Conocenos</a></li>
@@ -25,44 +30,45 @@
         <div class="header-content container">
             <h1>MOTO SHOP</h1>
             <p>
-                ¡¡HOLA LOCO!! VAMOS A RODAR!!
+                Animate y disfruta uno de nuestros excelentes productos
             </p>
             <a href="#" class="Btn-1">Informacion</a>
         </div>
     </header>
     <section class="moto">
-        <img class="moto-img" src="IMAGENES/PORTADA.png" alt="">
         <div class="moto-content container">
-            <h2>NUESTRAS REFERENCIAS</h2>
+            <h2>Nuestras referencias</h2>
             <P class="txt-p">
-                ACERCATE, TU MOTO TE ESTA ESPERANDO
+                ¡¡Somos tu mejor opción!!
             </P>
             <div class="moto-group">
                 <div class="moto-1">
                     <img src="IMAGENES/PERFIL_1.webp" alt="">
-                    <h3>MOTO LOREN</h3>
+                    <h3>Panigale V4RS</h3>
                     <P>
-                        UN LINDO CORAZON A 3800 REVOLUCIONES POR MINUTO
+                        $200.000 USS
                     </P>
+                    <button onclick="Tocar('Producto 1', 200000)">Agregar al carrito</button>
                 </div>
 
                 <div class="moto-1">
                     <img src="IMAGENES/PERFIL_2.jpg" alt="">
-                    <h3>PANIGALE</h3>
+                    <h3>Diavel V4</h3>
                     <P>
-                        UN LINDO CORAZON A 3800 REVOLUCIONES POR MINUTO
+                        $240.000 USS
                     </P>
+                    <button onclick="Tocar('Producto 2', 240000)">Agregar al carrito</button>
                 </div>
 
                 <div class="moto-1">
-                    <img src="IMAGENES/PERFIL_3.webp" class="P3" alt="">
-                    <h3>CORSE</h3>
+                    <img src="IMAGENES/PERFIL_3.webp" alt="">
+                    <h3>Panigale V4S</h3>
                     <P>
-                        UN LINDO CORAZON A 3800 REVOLUCIONES POR MINUTO
+                        $190.000 USS
                     </P>
+                    <button onclick="Tocar('Producto 3', 190000)">Agregar al carrito</button>
                 </div>
             </div>
-            <a href="#" class="Btn-1">INFORMACION</a>
         </div>
     </section>
     <main class="services">
@@ -71,19 +77,26 @@
             <div class="services-group">
                 <div class="services-1">
                     <img src="IMAGENES/services-1.jpg" alt="">
-                    <h3>Servicio 1</h3>
+                    <h3>Panigale V4</h3>
+                    <p>$198.000 USS</p>
+                    <button onclick="Tocar('Producto 4', 198000)">Agregar al carrito</button>
                 </div>
                 <div class="services-1">
                     <img src="IMAGENES/services-2.jpg" alt="">
-                    <h3>Servicio 2</h3>
+                    <h3>Panigale V2</h3>
+                    <p>$178.000 USS</p>
+                    <button onclick="Tocar('Producto 5', 178000)">Agregar al carrito</button>
                 </div>
                 <div class="services-1">
                     <img src="IMAGENES/services-3.jpg" alt="">
-                    <h3>Servicio 3</h3>
+                    <h3>Panigale V4 SP2</h3>
+                    <p>$260.000 USS</p>
+                    <button onclick="Tocar('Producto 6', 260000)">Agregar al carrito</button>
                 </div>
             </div>
         </div>
     </main>
     <script src="main.js"></script>
 </body>
+
 </html>

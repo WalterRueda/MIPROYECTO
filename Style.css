@@ -11,7 +11,7 @@ body {
     font-family: "Poppins", sans-serif;
 }
 .container {
-    max-width: 1200px;
+    text-decoration: none;
     margin: 0 auto;
 }
 .header {
@@ -60,7 +60,7 @@ body {
 .menu-icono {
     width: 25px;
 }
-.menu label {
+.menu-label {
     cursor: pointer;
     display: none;
 }
@@ -91,9 +91,15 @@ body {
     background-color: rgb(236, 24, 24);
 }
 .moto {
+    background-image: linear-gradient(
+    rgb(255, 255, 255),
+    rgb(131, 131, 233)),
+    url(IMAGENES/PORTADA.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover ;
+    background-attachment:fixed ;
     padding: 100px 0;
-    background-color: rgb(255, 255, 255);
-    position: relative;
 }
 .moto-content {
     text-align: center;
@@ -103,34 +109,100 @@ body {
     line-height: 70px;
     color:rgb(179, 1, 1);
     text-transform: uppercase;
-    padding: 0 250px;
+    padding: 0 auto;
     margin-bottom: 15px;
 }
 .txt-p {
-    font-size: 16px;
-    color: blue;
-    padding: 0 250px;
+    font-size: 25px;
+    color: rgb(20, 197, 88);
+    padding: 0 auto;
     margin-bottom: 35px;
 }
 .moto-group {
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
-    width: 5%;
 }
 .moto-1 img{
-    width: 500px;
+    width: 350px;
+    height: 210px;
 }
-.moto-img {
-    width: 700px;
+.moto-1 h3{
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    margin-bottom: 15px;
+    
+}
+.services{
+    background-image: linear-gradient(
+    rgb(255, 255, 255),
+    rgb(131, 131, 233)),
+    url(IMAGENES/PORTADA.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover ;
+    background-attachment:fixed ;
+    padding: 100px 0;
+}
+.services-content{
+    text-align: center;
+}
+.services-content h2{
+    font-size: 55px;
+    line-height:70px ;
+    color: rgb(241, 77, 77);
+    text-transform: uppercase ;
+    margin: 50px;
+}
+.services-group{
+    display: flex;
     justify-content: space-between;
+    margin-bottom: 50px;
 }
-.P3{
-   width: 600%;
-   display: flex;
-   justify-content: space-between;
-   margin-bottom: 50px;
+.services-1{
+    padding: 0 100px;
 }
-.logo{
-    width:px;
+.moto-1{
+    padding: 0%;
+}
+.services-1 img{
+    width: 250px;
+    margin-bottom: 15px;
+}
+.moto-content.container{
+    height: 650px;
+    grid-template-columns: 280px, 288px;
+}
+.moto-1 button {
+    padding: 1rem;
+    width: 100%;
+    background-color: #33c3f0;
+    border: none;
+    outline: none;
+    color: #ffff;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+.moto-1 button:hover{
+    background-color: #00719e;
+}
+.services-1 button {
+    padding: 1rem;
+    width: 100%;
+    background-color: #33c3f0;
+    border: none;
+    outline: none;
+    color: #ffff;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+.services-1 button:hover{
+    background-color: #00719e;
+    transition: all .3s;
 }
