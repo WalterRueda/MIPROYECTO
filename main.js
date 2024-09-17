@@ -96,14 +96,190 @@
 //     });
 // }
 
-const clik  = document.querySelectorAll(`.btn`);
-console.log(clik);
+// const clik  = document.querySelectorAll(`.btn`);
+// console.log(clik);
 
-clik.forEach((Boton) => {
-    Boton.addEventListener(`click`,()=>{
-        alert(`Hola`)
+// clik.forEach((Boton) => {
+//     Boton.addEventListener(`click`,()=>{
+//         alert(`Hola`)
+//     })
+// });
+// const Agregar = document.getElementById(`Agregar`);
+
+
+// Taller _______________________________________________________________________
+
+
+// Declarar variables nombre, edad, y ciudad e imprimirlas en la consola.
+// let nombre = "Walter";
+// let edad = 30;
+// let ciudad = "Cartagena";
+// console.log("Nombre: " + nombre);
+// console.log("Edad: " + edad);
+// console.log("Ciudad: " + ciudad);
+
+// // Crear un bucle for que imprima los números del 1 al 10 y un bucle while que imprima los números del 1 al 10.
+// for (let w = 0; w <=10; w++) {
+//     console.log(w);
+// }
+// let e = 0;
+// while (e <= 10) {
+//     console.log(e);
+//     e++;
+// }
+
+// // Crear una función que tome dos números como parámetros y devuelva su producto
+// function sumar (a,b){
+//     return a+b;
+// }
+// let resul = sumar(8,17);
+// console.log(resul);
+
+// // Convertir una función declarada en una función flecha. 
+// const multiplicar = (a,b) => a * b;
+
+// // Crea un nuevo array aplicando una función a cada elemento del array original
+// const Num = [1,2,3,4,5,6];
+// const Sum = x => x + 10;
+// const result = Num.map(Sum);
+// console.log(result);
+
+// // Función en JavaScript declarativa
+// function mostrarMensaje(mensaje) {
+//     console.log(mensaje);
+// }
+// mostrarMensaje("Hola desde una función declarativa");
+
+// // Función en JavaScript expresiva
+// const mostrarMensajeExpresion = function(mensaje) {
+//     console.log(mensaje);
+// }
+// mostrarMensajeExpresion("Hola desde una función de expresión");
+
+// // Obtener elementos del DOM con querySelector
+// const elemento = document.querySelector('.moto-1');
+// console.log(elemento);
+
+// // Obtener elementos del DOM con getElementById
+// const elementoId = document.getElementById('elemtoId');
+// console.log(elementoId);
+
+// // Cambiar texto con `textContent`
+// const titulo = document.getElementById('.Btn-1');
+// titulo.textContent = "LOCO";
+
+
+// Taller_____________________________________________________________________________________
+
+const contenedor = document.querySelector('.moto');
+console.log(contenedor);
+let TotalCarrito=[];
+
+const header = document.querySelector('.header');
+console.log(header);
+
+MostrarCarrito()
+function MostrarCarrito(){
+    const carrito = document.querySelector('.navbar img');
+    carrito.addEventListener('click',()=>{
+        console.log('diste click');
+        const MiModal = new bootstrap.Modal(document.getElementById('MiModal'));
+        MiModal.show();
+    });
+
+};
+
+CargarCarrito()
+function CargarCarrito(){
+    contenedor.addEventListener('Click',CargarProductos);
+    console.log("Diste click en el contenedor");
+}
+function CargarProductos (e){
+    e.preventDefault();
+}
+
+function leerDatos(Data) {
+    console.log(Data);
+
+    const productos = {
+        img : Data.querySelector('img').src,
+        nombre : Data.querySelector('.card-title').textContent,
+        precio : Math.floor(Data.querySelector('.card-text').innerText.replace(/[^0-9.-]+/g,"")),
+        cantidad : 1,
+        id : Data.querySelector('a').getAttribute('Data-id')
+    };
+    console.log(productos);
+    const Existe = TotalCarrito.some(Producto=> Producto.id === productos.id);
+    if (Existe) {
+        TotalCarrito = TotalCarrito.map(Producto=>{
+            if (Producto.id === productos.id) {
+                Producto.cantidad++;
+            }
+            return Producto;
+        })
+    } else {
+        TotalCarrito = [...TotalCarrito, productos];
+    }
+    ActualizarCarritoHtml();
+}
+
+function ActualizarCarritoHtml() {
+    ContenedorCarrito.innerHTML = '';
+    TotalCarrito.forEach(Producto => {
+        const { img, nombre, precio, cantidad, id } = Producto;
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td><img src="${img}" width="50"></td>
+        <td>${nombre}</td>
+        <td>${precio}</td>
+        <td><input type="number" value="${cantidad}" class="from-control ActualizarCantidad"></td>
+        <td><a href="#" class="btn btn-danger eliminarProducto" Data-id="${id}">X</a></td>
+    `;
+    ContenedorCarrito.appendChild(row);
+    const Eliminar = row.querySelector('.EliminarProducto');
+    Eliminar.addEventListener('Click',EliminarProducto);
+    const ActualizarCantidadInput = row.querySelector('.ActualizarCantidad');
+    });
+    Total()
+}
+
+function EliminarProducto(e) {
+    const id=e.target.getAttribute('Data-id');
+    console.log(id);
+    TotalCarrito=TotalCarrito.map(Producto=>{
+        if (Producto.id === id) {
+            if (Producto.cantidad>1) {
+                Producto.cantidad--;
+            } else {
+                return null
+            }
+        }
+        return Producto
+    }).
+    
+    TotalCarrito=TotalCarrito.filter(Producto => Producto !== null);
+    console.log(TotalCarrito);
+    ActualizarCarritoHtml() 
+}
+
+function Total () {
+    const TotalProductos = TotalCarrito.reduce((Total,Producto)=>Total + (Producto.cantidad*Producto.precio),0);
+    const TotalCarritoHTML = document.getElementById('Total-carrito');
+    TotalCarritoHTML.innerHTML=`Total $${Math.floor(TotalProductos)}`
+}
+
+function ActualizarCantidad(e) {
+    const id=e.target.getAttribute('Data-id');
+    const NuevaCantidad=parseInt(e,target.value);
+
+    TotalCarrito=TotalCarrito.map((Producto)=>{
+        if (Producto.id === id) {
+            Producto.cantidad=NuevaCantidad;
+        }
+        return Producto
     })
-});
-const Agregar = document.getElementById(`Agregar`);
- 
-
+    Total()
+    ActualizarCarritoHtml();
+    
+}

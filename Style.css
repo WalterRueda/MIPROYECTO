@@ -35,11 +35,7 @@ body {
     align-items: center;
     justify-content: space-between;
 }
-.logo {
-    color: rgb(2, 1, 0);
-    font-size: 25px;
-    font-weight: 800;
-}
+
 .menu .navbar ul li {
     position: relative;
     float: left;
@@ -57,13 +53,7 @@ body {
 .menu .navbar ul li a:hover {
     color: rgb(245, 11, 11);
 }
-.menu-icono {
-    width: 25px;
-}
-.menu-label {
-    cursor: pointer;
-    display: none;
-}
+
 .header-content {
     text-align: center;
 }
@@ -80,16 +70,7 @@ body {
     padding: 0 250px;
     margin-bottom: 25px;
 }
-.Btn-1 {
-    display: inline-block;
-    padding: 11px 35px;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    text-transform: uppercase;
-}
-.Btn-1:hover {
-    background-color: rgb(236, 24, 24);
-}
+
 .moto {
     background-image: linear-gradient(
     rgb(255, 255, 255),
@@ -127,12 +108,7 @@ body {
     width: 350px;
     height: 210px;
 }
-.moto-1 h3{
-    color: rgb(0, 0, 0);
-    font-size: 20px;
-    margin-bottom: 15px;
-    
-}
+
 .services{
     background-image: linear-gradient(
     rgb(255, 255, 255),
@@ -144,35 +120,7 @@ body {
     background-attachment:fixed ;
     padding: 100px 0;
 }
-.services-content{
-    text-align: center;
-}
-.services-content h2{
-    font-size: 55px;
-    line-height:70px ;
-    color: rgb(241, 77, 77);
-    text-transform: uppercase ;
-    margin: 50px;
-}
-.services-group{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 50px;
-}
-.services-1{
-    padding: 0 100px;
-}
-.moto-1{
-    padding: 0%;
-}
-.services-1 img{
-    width: 250px;
-    margin-bottom: 15px;
-}
-.moto-content.container{
-    height: 650px;
-    grid-template-columns: 280px, 288px;
-}
+
 .moto-1 button {
     padding: 1rem;
     width: 100%;
@@ -186,23 +134,10 @@ body {
     cursor: pointer;
     margin-bottom: 5px;
 }
-.moto-1 button:hover{
-    background-color: #00719e;
-}
-.services-1 button {
-    padding: 1rem;
-    width: 100%;
-    background-color: #33c3f0;
-    border: none;
-    outline: none;
-    color: #ffff;
-    text-transform: uppercase;
-    font-size: 1.1rem;
-    border-radius: 5px;
+
+.navbar img{
+    width: 50px;
+    display: flex;
+    justify-content: flex-end;
     cursor: pointer;
-    margin-bottom: 5px;
-}
-.services-1 button:hover{
-    background-color: #00719e;
-    transition: all .3s;
 }
