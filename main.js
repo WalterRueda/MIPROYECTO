@@ -171,7 +171,8 @@
 
 // Taller_____________________________________________________________________________________
 
-const contenedor = document.querySelector('.moto');
+const contenedor = document.querySelector('.moto-content');
+const contenedorCarrito = document.getElementById('ListaCarrito');
 console.log(contenedor);
 let TotalCarrito=[];
 
@@ -185,28 +186,42 @@ function MostrarCarrito(){
         console.log('diste click');
         const MiModal = new bootstrap.Modal(document.getElementById('MiModal'));
         MiModal.show();
-    });
+    })
 
-};
+}
 
 CargarCarrito()
 function CargarCarrito(){
-    contenedor.addEventListener('Click',CargarProductos);
+    contenedor.addEventListener('click',CargarProductos)
     console.log("Diste click en el contenedor");
 }
 function CargarProductos (e){
-    e.preventDefault();
+    if (e.target.classList.contains('agregar-carrito')){
+        const ProductoSeleccionado=e.target.parentElement;
+        leerDatos(ProductoSeleccionado);
+
+        const button = e.target
+        button.innerHTML="Agregando al carrito"
+
+        setTimeout(()=>{
+            button.innerHTML="Agregado al carrito" 
+        },1000)
+
+        setTimeout(()=>{
+            button.innerHTML="Agregar al carrito" 
+        },3000)
+    }
 }
 
-function leerDatos(Data) {
-    console.log(Data);
+function leerDatos(data) {
+    console.log(data);
 
     const productos = {
-        img : Data.querySelector('img').src,
-        nombre : Data.querySelector('.card-title').textContent,
-        precio : Math.floor(Data.querySelector('.card-text').innerText.replace(/[^0-9.-]+/g,"")),
+        img : data.querySelector('img').src,
+        nombre : data.querySelector('h3').textContent,
+        precio : Math.floor(data.querySelector('p').innerText.replace(/[^0-9.-]+/g,"")),
         cantidad : 1,
-        id : Data.querySelector('a').getAttribute('Data-id')
+        id : data.querySelector('button').getAttribute('data-id')
     };
     console.log(productos);
     const Existe = TotalCarrito.some(Producto=> Producto.id === productos.id);
@@ -224,28 +239,29 @@ function leerDatos(Data) {
 }
 
 function ActualizarCarritoHtml() {
-    ContenedorCarrito.innerHTML = '';
+    contenedorCarrito.innerHTML = ``;
     TotalCarrito.forEach(Producto => {
         const { img, nombre, precio, cantidad, id } = Producto;
 
         const row = document.createElement('tr');
         row.innerHTML = `
-        <td><img src="${img}" width="50"></td>
+        <td><img src='${img}' width="50"></td>
         <td>${nombre}</td>
         <td>${precio}</td>
         <td><input type="number" value="${cantidad}" class="from-control ActualizarCantidad"></td>
-        <td><a href="#" class="btn btn-danger eliminarProducto" Data-id="${id}">X</a></td>
+        <td><a href="#" class="btn btn-danger eliminarProducto" data-id="${id}">X</a></td>
     `;
-    ContenedorCarrito.appendChild(row);
-    const Eliminar = row.querySelector('.EliminarProducto');
-    Eliminar.addEventListener('Click',EliminarProducto);
+    contenedorCarrito.appendChild(row);
+    const Eliminar = row.querySelector('.eliminarProducto');
+    Eliminar.addEventListener('click',eliminarProducto);
     const ActualizarCantidadInput = row.querySelector('.ActualizarCantidad');
-    });
+    })
     Total()
 }
 
-function EliminarProducto(e) {
-    const id=e.target.getAttribute('Data-id');
+function eliminarProducto(e) {
+    e.preventDefault();
+    const id=e.target.getAttribute('data-id');
     console.log(id);
     TotalCarrito=TotalCarrito.map(Producto=>{
         if (Producto.id === id) {
@@ -270,8 +286,8 @@ function Total () {
 }
 
 function ActualizarCantidad(e) {
-    const id=e.target.getAttribute('Data-id');
-    const NuevaCantidad=parseInt(e,target.value);
+    const id=e.target.getAttribute('data-id');
+    const NuevaCantidad=parseInt(e.target.value);
 
     TotalCarrito=TotalCarrito.map((Producto)=>{
         if (Producto.id === id) {
@@ -281,5 +297,4 @@ function ActualizarCantidad(e) {
     })
     Total()
     ActualizarCarritoHtml();
-    
 }
